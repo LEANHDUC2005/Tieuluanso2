@@ -1,4 +1,4 @@
-git clone https://github.com/LEANHDUC2005/Tieuluan1.git
+git clone https://github.com/LEANHDUC2005/Tieuluanso2.git
 
 **Vào thư mục Tieuluanso2**
 
