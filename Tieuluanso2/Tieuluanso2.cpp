@@ -41,6 +41,7 @@ int main()
 		printf("|______________________|_________________________|________________________|\n");
 		printf("| Nhap lua chon cua ban [1-9]:");
 		scanf_s("%d", &choice);
+		while (getchar() != '\n');
 		switch (choice)
 		{
 		case 1:
@@ -50,8 +51,11 @@ int main()
 			printf("| [A].Vao dau danh sach\n");
 			printf("| [B].Vao cuoi danh sach\n");
 			printf("| Lua chon cua ban [A-B]:");
-			while (getchar() != '\n');
 			scanf_s("%c", &searchchoice, (unsigned int)sizeof(searchchoice));
+			while (getchar() != '\n');
+			{
+
+			}
 			switch (searchchoice)
 			{
 			case 'A':

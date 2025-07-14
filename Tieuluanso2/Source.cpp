@@ -83,7 +83,6 @@ void ThemsinhvienHead(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 	while(true){
 		printf("Nhap thong tin sinh vien thu %d\n", slsv + 1);
 		do {
-			while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 			printf("Nhap MSSV (nhap 0 de ket thuc): ");
 			nhapChuoi(sv.mssv, sizeof(sv.mssv));
 			if (strcmp(sv.mssv, "0") == 0) {
@@ -120,9 +119,8 @@ void ThemsinhvienHead(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 		scanf_s("%d", &sv.ngaysinh.year);
 		while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 
-		printf("Nhap ma lop: ");
+		printf("Nhap ma lop ( toi da 8 so ): ");
 		nhapChuoi(sv.malop, sizeof(sv.malop));
-
 
 		printf("Nhap diem trung binh: ");
 		while (scanf_s("%f", &sv.dtb) != 1)
@@ -140,8 +138,7 @@ void ThemsinhvienBack(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 {
 	int slsv = 0;
 	while (true) {
-		printf("| Nhap thong tin sinh vien thu %d \n", slsv + 1);
-		while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
+		printf("| Nhap thong tin sinh vien thu %d \n", slsv + 1); // xóa bỏ ký tự '\n' còn sót lại
 		do {
 			printf("| Nhap MSSV (nhap 0 de ket thuc): ");
 			nhapChuoi(sv.mssv, sizeof(sv.mssv));
