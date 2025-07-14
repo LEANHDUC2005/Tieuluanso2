@@ -1,5 +1,4 @@
 ﻿#pragma once
-#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,8 +25,7 @@ typedef struct node {
 };
 
 typedef struct list {
-    node* pHead;
-    node* pTail;
+    node* pHead, *pTail;
 };
 extern list L;
 extern sinhvien a;
@@ -55,6 +53,7 @@ void xuatdanhsach(list& L);
 
 // Tìm kiếm
 node* Timkiemsinhvien(list& L, char inforSearch[]);
+list Timkiemtheogioitinh(list& L, char inforsearch[]);
 
 // Xoá
 void Xoasinhvien(list& L, char mssvDelete[]);
@@ -82,3 +81,5 @@ int isDigit(char str[]);
 
 // Lựa chọn sắp xếp
 char up_or_down();
+// Giải phóng danh sách
+void clearList(list* L);

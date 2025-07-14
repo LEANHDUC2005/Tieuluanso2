@@ -81,9 +81,9 @@ void ThemsinhvienHead(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 {
 	int slsv = 0;
 	while(true){
-		printf("Nhap thong tin sinh vien thu %d \n", slsv + 1);
-		while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
+		printf("Nhap thong tin sinh vien thu %d\n", slsv + 1);
 		do {
+			while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 			printf("Nhap MSSV (nhap 0 de ket thuc): ");
 			nhapChuoi(sv.mssv, sizeof(sv.mssv));
 			if (strcmp(sv.mssv, "0") == 0) {
@@ -95,19 +95,19 @@ void ThemsinhvienHead(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 				printf("MSSV khong hop le!\n");
 			}
 		} while (!isValidMSSV(sv.mssv));
-		printf("DEBUG: MSSV: %s\n", sv.mssv);
+		//printf("DEBUG: MSSV: %s\n", sv.mssv);
 
 		printf("Nhap Ho va Ten: ");
 		nhapChuoi(sv.hoten, sizeof(sv.hoten));
-		printf("DEBUG: Hoten: %s\n", sv.hoten);
+		//printf("DEBUG: Hoten: %s\n", sv.hoten);
 
 		printf("Nhap So dien thoai: ");
 		nhapChuoi(sv.sdt, sizeof(sv.sdt));
-		printf("DEBUG: Sodienthoai: %s\n", sv.sdt);
+		//printf("DEBUG: Sodienthoai: %s\n", sv.sdt);
 
 		printf("Nhap Gioi tinh (Nam/Nu): ");
 		nhapChuoi(sv.gioitinh, sizeof(sv.gioitinh));
-		printf("DEBUG: Gioi tinh: %s\n", sv.gioitinh);
+		//printf("DEBUG: Gioi tinh: %s\n", sv.gioitinh);
 
 		printf("Nhap ngay thang nam sinh\n");
 		printf("Nhap ngay sinh (dd) : ");
@@ -140,10 +140,10 @@ void ThemsinhvienBack(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 {
 	int slsv = 0;
 	while (true) {
-		printf("Nhap thong tin sinh vien thu %d \n", slsv + 1);
+		printf("| Nhap thong tin sinh vien thu %d \n", slsv + 1);
 		while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 		do {
-			printf("Nhap MSSV (nhap 0 de ket thuc): ");
+			printf("| Nhap MSSV (nhap 0 de ket thuc): ");
 			nhapChuoi(sv.mssv, sizeof(sv.mssv));
 			if (strcmp(sv.mssv, "0") == 0) {
 				printf(" Ket thuc thanh cong !\n");
@@ -154,39 +154,39 @@ void ThemsinhvienBack(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 				printf("MSSV khong hop le!\n");
 			}
 		} while (!isValidMSSV(sv.mssv));
-		printf("DEBUG: MSSV: %s\n", sv.mssv);
+		//printf("DEBUG: MSSV: %s\n", sv.mssv);
 
-		printf("Nhap Ho va Ten: ");
+		printf("| Nhap Ho va Ten: ");
 		nhapChuoi(sv.hoten, sizeof(sv.hoten));
-		printf("DEBUG: Hoten: %s\n", sv.hoten);
+		//printf("DEBUG: Hoten: %s\n", sv.hoten);
 
-		printf("Nhap So dien thoai: ");
+		printf("| Nhap So dien thoai: ");
 		nhapChuoi(sv.sdt, sizeof(sv.sdt));
-		printf("DEBUG: Sodienthoai: %s\n", sv.sdt);
+		//printf("DEBUG: Sodienthoai: %s\n", sv.sdt);
 
-		printf("Nhap Gioi tinh (Nam/Nu): ");
+		printf("| Nhap Gioi tinh (Nam/Nu): ");
 		nhapChuoi(sv.gioitinh, sizeof(sv.gioitinh));
-		printf("DEBUG: Gioi tinh: %s\n", sv.gioitinh);
+		//printf("DEBUG: Gioi tinh: %s\n", sv.gioitinh);
 
-		printf("Nhap ngay thang nam sinh\n");
-		printf("Nhap ngay sinh (dd) : ");
+		printf("| Nhap ngay thang nam sinh\n");
+		printf("| Nhap ngay sinh (dd) : ");
 		scanf_s("%d", &sv.ngaysinh.day);
 
-		printf("Nhap thang sinh (mm) : ");
+		printf("| Nhap thang sinh (mm) : ");
 		scanf_s("%d", &sv.ngaysinh.month);
 
-		printf("Nhap nam sinh (yyyy) : ");
+		printf("| Nhap nam sinh (yyyy) : ");
 		scanf_s("%d", &sv.ngaysinh.year);
 		while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 
-		printf("Nhap ma lop: ");
+		printf("| Nhap ma lop: ");
 		nhapChuoi(sv.malop, sizeof(sv.malop));
 
 
-		printf("Nhap diem trung binh: ");
+		printf("| Nhap diem trung binh: ");
 		while (scanf_s("%f", &sv.dtb) != 1)
 		{
-			printf("Nhap diem sai . Vui long nhap lai");
+			printf("| Nhap diem sai ! Vui long nhap lai");
 			while (getchar() != '\n');
 		}// Change %d to %f for float type
 		while (getchar() != '\n'); // xóa '\n'
@@ -198,8 +198,8 @@ void ThemsinhvienBack(list& L, sinhvien sv) // Pass sinhvien by reference to ini
 void xuat1sinhvien(node* temp)  // xuat 1 sinh vien
 {
 	sinhvien a = temp->data;
-	printf("---------------------------------------------------------------------------------------------------\n");
-	printf("----------------------------------THONG TIN SINH VIEN ---------------------------------------------\n");
+	printf("\n---------------------------------------------------------------------------------------------------\n");
+	printf("\n----------------------------------THONG TIN SINH VIEN ---------------------------------------------\n");
 	printf("| %-10s | %-20s | %-12s | %-10s | %02d/%02d/%04d  | %-8s | %-6.2f |\n",
 		a.mssv,
 		a.hoten,
@@ -250,8 +250,25 @@ node* Timkiemsinhvien(list& L, char inforSearch[])
 		}
 		temp = temp->next;
 	}
-	printf("Khong tim duoc sinh vien !\n");
+	printf("| Khong tim duoc sinh vien !\n");
 	return NULL;
+}
+
+// Ham tim kiem hoc sinh theo gioi tinh Nam/Nu
+list Timkiemtheogioitinh(list& L, char inforsearch[])
+{
+	list L2;
+	Init(L2);
+	node* p = L.pHead;
+	while (p != NULL)
+	{
+		if (strcmp(p->data.gioitinh, inforsearch) == 0)
+		{
+			addHead(L2, p->data);
+		}
+		p = p->next;
+	}
+	return L2;
 }
 // HAM HOAN DOI
 void swap(sinhvien* a, sinhvien* b)
@@ -270,7 +287,7 @@ void Xoasinhvien(list& L, char mssvDelete[])
 		if (!Timkiemsinhvien(L, mssvDelete)) return;
 		else
 		{
-			printf("Thong tin sinh vien \n");
+			printf("| Thong tin sinh vien \n");
 			xuat1sinhvien(temp);
 			break;
 		}
@@ -283,7 +300,7 @@ void Xoasinhvien(list& L, char mssvDelete[])
 	{
 		free(temp);
 		L.pHead = L.pTail = NULL;
-		printf("Xoa sinh vien co MSSV [%s] thanh cong!\n", mssvDelete);
+		printf("| Xoa sinh vien co MSSV [%s] thanh cong!\n", mssvDelete);
 		return;
 	}
 	/* Neu p la node cuoi cung */
@@ -297,7 +314,7 @@ void Xoasinhvien(list& L, char mssvDelete[])
 		prev->next = NULL;
 		L.pTail = prev;
 		free(temp);
-		printf("Xoa sinh vien co MSSV [%s] thanh cong!\n", mssvDelete);
+		printf("| Xoa sinh vien co MSSV [%s] thanh cong!\n", mssvDelete);
 		return;
 	}
 	else
@@ -326,46 +343,46 @@ int isDigit(char str[])
 void Suasinhvien(sinhvien* sv) {
 	while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 	do {
-		printf("Nhap MSSV: ");
+		printf("| Nhap MSSV: ");
 		nhapChuoi(sv->mssv, sizeof(sv->mssv));
 		if (!isValidMSSV(sv->mssv))
 		{
 			printf("MSSV khong hop le!\n");
 		}
 	} while (!isValidMSSV(sv->mssv));
-	printf("DEBUG: MSSV: %s\n", sv->mssv);
+	//printf("DEBUG: MSSV: %s\n", sv->mssv);
 
-	printf("Nhap Ho va Ten: ");
+	printf("| Nhap Ho va Ten: ");
 	nhapChuoi(sv->hoten, sizeof(sv->hoten));
-	printf("DEBUG: Hoten: %s\n", sv->hoten);
+	//printf("DEBUG: Hoten: %s\n", sv->hoten);
 
-	printf("Nhap So dien thoai: ");
+	printf("| Nhap So dien thoai: ");
 	nhapChuoi(sv->sdt, sizeof(sv->sdt));
-	printf("DEBUG: Sodienthoai: %s\n", sv->sdt);
+	//printf("DEBUG: Sodienthoai: %s\n", sv->sdt);
 
-	printf("Nhap Gioi tinh (Nam/Nu): ");
+	printf("| Nhap Gioi tinh (Nam/Nu): ");
 	nhapChuoi(sv->gioitinh, sizeof(sv->gioitinh));
-	printf("DEBUG: Gioi tinh: %s\n", sv->gioitinh);
+	//printf("DEBUG: Gioi tinh: %s\n", sv->gioitinh);
 
-	printf("Nhap ngay thang nam sinh\n");
-	printf("Nhap ngay sinh (dd) : ");
+	printf("| Nhap ngay thang nam sinh\n");
+	printf("| Nhap ngay sinh (dd) : ");
 	scanf_s("%d", &sv->ngaysinh.day);
 
-	printf("Nhap thang sinh (mm) : ");
+	printf("| Nhap thang sinh (mm) : ");
 	scanf_s("%d", &sv->ngaysinh.month);
 
-	printf("Nhap nam sinh (yyyy) : ");
+	printf("| Nhap nam sinh (yyyy) : ");
 	scanf_s("%d", &sv->ngaysinh.year);
 	while (getchar() != '\n'); // xóa bỏ ký tự '\n' còn sót lại
 
-	printf("Nhap ma lop: ");
+	printf("| Nhap ma lop: ");
 	nhapChuoi(sv->malop, sizeof(sv->malop));
 
 
-	printf("Nhap diem trung binh: ");
+	printf("| Nhap diem trung binh: ");
 	while (scanf_s("%f", &sv->dtb) != 1)
 	{
-		printf("Nhap diem sai . Vui long nhap lai");
+		printf("| Nhap diem sai ! Vui long nhap lai");
 		while (getchar() != '\n');
 	}// Change %d to %f for float type
 	while (getchar() != '\n'); // xóa '\n'
@@ -374,13 +391,13 @@ void Capnhatsinhvien(list& L, char mssvUpdate[])
 {
 	if (!isDigit(mssvUpdate))
 	{
-		printf("MSSV khong hop le!\n");
+		printf("| MSSV khong hop le!\n");
 		return;
 	}
 	node* p = Timkiemsinhvien(L, mssvUpdate);
 	if (p)
 	{
-		printf("Tim thay sinh vien co MSSV: %s\n", mssvUpdate);
+		printf("| Tim thay sinh vien co MSSV: %s\n", mssvUpdate);
 		xuat1sinhvien(p);
 		printf("-----CAP NHAT THONG TIN SINH VIEN (NHAN ENTER DE TIEP TUC)----\n");
 		char oldmssv[10];
@@ -571,7 +588,7 @@ void docFile(list& L, const char* filename)
 		count++;
 	}
 	fclose(f);
-	printf("Doc file thanh cong! Da them %d sinh vien vao danh sach.\n", count);
+	printf("| Doc file thanh cong! Da them %d sinh vien vao danh sach.\n", count);
 }
 
 // HAM GHI DU LIEU VAO TEP
@@ -581,14 +598,14 @@ void ghiFile(list& L, const char* filename)
 	fopen_s(&f, filename, "w");
 	if (f == NULL)
 	{
-		printf("Khong mo duoc file %s de ghi!\n", filename);
+		printf("| Khong mo duoc file %s de ghi!\n", filename);
 		return;
 	}
 	node* p = L.pHead;
 	while (p != NULL)
 	{
 		sinhvien sv = p->data;
-		fprintf(f, "%s|%s|%s|%s|%02d|%02d|%04d|%s|%f\n",
+		fprintf(f, "%s|%s|%s|%s|%02d|%02d|%04d|%s|%.2f\n",
 			sv.mssv,
 			sv.hoten,
 			sv.sdt,
@@ -602,7 +619,7 @@ void ghiFile(list& L, const char* filename)
 		p = p->next;
 	}
 	fclose(f);
-	printf("Ghi file thanh cong vao %s:\n", filename);
+	printf("| Ghi file thanh cong vao %s:\n", filename);
 }
 // Ham lua chon sap xep tang dan hoac giam dan
 char up_or_down()
@@ -614,4 +631,19 @@ char up_or_down()
 	printf("Lua chon cua ban [A-B]:");
 	scanf_s(" %c", &updownchoice, (unsigned int)sizeof(updownchoice));
 	return updownchoice;
+}
+// Ham giai phong ham
+void clearList(list*L) {
+	node* current = L->pHead;
+	while (current != NULL) {
+		node* temp = current;
+		current = current->next;
+		free(temp); // Giải phóng từng node
+	}
+
+	// Cập nhật lại danh sách về rỗng
+	L->pHead = NULL;
+	L->pTail = NULL;
+
+	printf("| Danh sach da duoc giai phong bo nho hoan toan.\n");
 }

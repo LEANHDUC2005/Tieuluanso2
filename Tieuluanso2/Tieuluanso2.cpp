@@ -21,33 +21,35 @@ int main()
 {
 	Init(L);
 	char username[20];
-	printf("==================== DANH SACH QUAN LY THONG TIN SINH VIEN ====================\n");
-	printf("Nhap ten cua ban:");
+	    printf("|================ DANH SACH QUAN LY THONG TIN SINH VIEN ==================|\n");
+	printf("| Nhap ten cua ban:");
 	nhapChuoi(username, sizeof(username));
-	printf("\nCHAO MUNG ! %s\n", username);
+	printf("\n| CHAO MUNG ! %s\n", username);
 	int choice;
 	do
 	{
-		printf("Ban muon:\n");
-		printf("[1].Them sinh vien\n");
-		printf("[2].Hien thi danh sach\n");
-		printf("[3].Tim kiem sinh vien\n");
-		printf("[4].Xoa sinh vien\n");
-		printf("[5].Chinh sua thong tin sinh vien\n");
-		printf("[6].Sap xep danh sach sinh vien\n");
-		printf("[7].Ghi du lieu danh sach ra tep\n");
-		printf("[8].Doc du lieu danh sach tu tep\n");
-		printf("[9].Thoat danh sach\n");
-		printf("Nhap lua chon cua ban [1-9]:");
+		printf("\n|=========================================================================|\n");
+		printf("|                                Ban muon:                                |\n");
+		printf("|=========================================================================|\n");
+		printf("|  [1].Them sinh vien  | [2].Hien thi danh sach  | [3].Tim kiem sinh vien |\n");
+		printf("|______________________|_________________________|________________________|\n");
+		printf("|                      |                         |                        |\n");
+		printf("|  [4].Xoa sinh vien   | [5].Chinh sua thong tin | [6].Sap xep danh sach  |\n");
+		printf("|______________________|_________________________|________________________|\n");
+		printf("|                      |                         |                        |\n");
+		printf("|  [7].Ghi ds ra tep   | [8].Doc ds tu tep       | [9].Thoat danh sach    |\n");
+		printf("|______________________|_________________________|________________________|\n");
+		printf("| Nhap lua chon cua ban [1-9]:");
 		scanf_s("%d", &choice);
 		switch (choice)
 		{
 		case 1:
 		{
 			char searchchoice;
-			printf("Ban muon them sinh vien:\n");
-			printf("[A].Vao dau danh sach\n");
-			printf("[B].Vao cuoi danh sach\n");
+			printf("| Ban muon them sinh vien:\n");
+			printf("| [A].Vao dau danh sach\n");
+			printf("| [B].Vao cuoi danh sach\n");
+			printf("| Lua chon cua ban [A-B]:");
 			while (getchar() != '\n');
 			scanf_s("%c", &searchchoice, (unsigned int)sizeof(searchchoice));
 			switch (searchchoice)
@@ -65,20 +67,36 @@ int main()
 		case 3:
 		{
 			char  inforSearch[50];
-			printf("Nhap thong tin cua sinh vien can tim:");
+			printf("| Nhap thong tin cua sinh vien can tim [ MSSV , Hoten , SDT, Diem , Gioitinh ( Nhap gioi tinh ) ]:");
 			while (getchar() != '\n');
 			nhapChuoi(inforSearch , sizeof(inforSearch));
-			node* p = Timkiemsinhvien(L, inforSearch);
-			if (p)
+			if (strcmp(inforSearch, "Nam") == 0 || strcmp(inforSearch, "Nu") == 0) 
 			{
-				printf("Da tim thay sinh vien co MSSV: %s", p->data.mssv);
-				xuat1sinhvien(p);
+				list L2 = Timkiemtheogioitinh(L, inforSearch);
+				if (L.pHead == NULL)
+				{
+					printf("Khong tim duoc sinh vien !");
+				}
+				else {
+					printf("---------------------------------- Tim kiem thanh cong !------------------------------------------\n");
+					xuatdanhsach(L2);
+				}
+
+			}
+			else 
+			{
+				node* p = Timkiemsinhvien(L, inforSearch);
+				if (p)
+				{
+					printf("Da tim thay sinh vien co MSSV: %s", p->data.mssv);
+					xuat1sinhvien(p);
+				}
 			}
 		}break;
 		case 4:
 		{
 			char mssvDelete[10];
-			printf("Nhap MSSV can xoa:");
+			printf("| Nhap MSSV can xoa:");
 			while (getchar() != '\n');
 			nhapChuoi(mssvDelete, sizeof(mssvDelete));
 			Xoasinhvien(L, mssvDelete);
@@ -86,7 +104,7 @@ int main()
 		case 5:
 		{
 			char mssvUpdate[10];
-			printf("Nhap MSSV can cap nhat:");
+			printf("| Nhap MSSV can cap nhat:");
 			while (getchar() != '\n');
 			nhapChuoi(mssvUpdate, sizeof(mssvUpdate));
 			Capnhatsinhvien(L, mssvUpdate);
@@ -94,12 +112,12 @@ int main()
 		case 6:
 		{
 			int sortchoice;
-			printf("Ban muon sap xep danh sach theo:\n");
-			printf("[1].Ma so sinh vien\n");
-			printf("[2].Ho va ten\n");
-			printf("[3].So dien thoai\n");
-			printf("[4].Diem trung binh\n");
-			printf("Nhap lua chon cua ban [1-4]:");
+			printf("| Ban muon sap xep danh sach theo:\n");
+			printf("| [1].Ma so sinh vien\n");
+			printf("| [2].Ho va ten\n");
+			printf("| [3].So dien thoai\n");
+			printf("| [4].Diem trung binh\n");
+			printf("| Nhap lua chon cua ban [1-4]:");
 			scanf_s("%d", &sortchoice);
 			switch (sortchoice)
 			{
@@ -149,7 +167,7 @@ int main()
 		case 7:
 		{
 			char filename[100];
-			printf("Nhap ten file de ghi du lieu: ");
+			printf("| Nhap ten file de ghi du lieu: ");
 			while (getchar() != '\n');
 			nhapChuoi(filename, sizeof(filename)); // Use the existing `nhapChuoi` function to input the filename.
 			ghiFile(L, filename); // Pass the list `L` and the filename to the `ghiFile` function.
@@ -158,7 +176,7 @@ int main()
 		case 8:
 		{
 			char filename[100];
-			printf("Nhap ten file de doc du lieu: ");
+			printf("| Nhap ten file de doc du lieu: ");
 			while (getchar() != '\n');
 			nhapChuoi(filename, sizeof(filename));
 			docFile(L, filename);
@@ -167,6 +185,7 @@ int main()
 		default: printf("Lenh khong hop le!\n");
 		}
 	} while (choice != 9);
+	clearList(&L);
 	printf("================================= TAM BIET %s =================================\n", username);
 	return 0;
 }
