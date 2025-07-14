@@ -420,6 +420,8 @@ void Capnhatsinhvien(list& L, char mssvUpdate[])
 */
 void sapxepMSSVtangdan(list& L)
 {
+	if (L.pHead == NULL || L.pHead->next == NULL)
+		return;
 	for (node* p = L.pHead; p != NULL; p = p->next)
 	{
 		for (node* psau = p->next; psau != NULL; psau = psau->next)
@@ -432,6 +434,8 @@ void sapxepMSSVtangdan(list& L)
 }
 void sapxepMSSVgiamdan(list& L)
 {
+	if (L.pHead == NULL || L.pHead->next == NULL)
+		return;
 	for (node* p = L.pHead; p != NULL; p = p->next)
 	{
 		for (node* psau = p->next; psau != NULL; psau = psau->next)
@@ -443,43 +447,31 @@ void sapxepMSSVgiamdan(list& L)
 	printf("----Sap xep sinh vien theo MSSV giam dan thanh cong!----\n");
 }
 // Sap xep theo Ho ten
-/* Thuat toan Bubble Sort:
-   for i = 0 -> n ; i++
-	  for j = i -> n ; j++
-		 if s[j] > s[j+1]
-		  swap(s[j], s[j+1])
-*/
 void sapxepHotentangdan(list& L)
 {
 	if (L.pHead == NULL || L.pHead->next == NULL)
-		return;  // Danh sách rỗng hoặc chỉ có 1 phần tử
-
-	for (node* i = L.pHead; i->next != NULL; i = i->next)
+		return;
+	for (node* p = L.pHead; p != NULL; p = p->next)
 	{
-		for (node* j = L.pHead; j->next != NULL; j = j->next)
+		for (node* psau = p->next; psau != NULL; psau = psau->next)
 		{
-			if (strcmp(j->data.hoten, j->next->data.hoten) > 0)
-			{
-				swap(&j->data, &j->next->data);
-			}
+			if (strcmp(p->data.hoten, psau->data.hoten) < 0)
+				swap(&p->data, &psau->data);
 		}
 	}
-	printf("----Sap xep sinh vien theo Ho ten tang dan thanh cong!----\n");
+	printf("----Sap xep sinh vien theo Ho ten giam dan thanh cong!----\n");
 }
 
 void sapxepHotengiamdan(list& L)
 {
 	if (L.pHead == NULL || L.pHead->next == NULL)
-		return;  // Danh sách rỗng hoặc chỉ có 1 phần tử
-
-	for (node* i = L.pHead; i->next != NULL; i = i->next)
+		return;
+	for (node* p = L.pHead; p != NULL; p = p->next)
 	{
-		for (node* j = L.pHead; j->next != NULL; j = j->next)
+		for (node* psau = p->next; psau != NULL; psau = psau->next)
 		{
-			if (strcmp(j->data.hoten, j->next->data.hoten) < 0)
-			{
-				swap(&j->data, &j->next->data);
-			}
+			if (strcmp(p->data.hoten, psau->data.hoten) > 0)
+				swap(&p->data, &psau->data);
 		}
 	}
 	printf("----Sap xep sinh vien theo Ho ten giam dan thanh cong!----\n");
